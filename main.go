@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"io/ioutil"
+	"strings"
 	"encoding/json"
 )
 
@@ -27,7 +28,8 @@ func perror(err error) {
 }
 
 func get_ip() {
-	url := "http://ip.zxq.co"
+	kustom := "101.0.4.6"
+	url := "http://ip.zxq.co/" + kustom
 
 	res, err := http.Get(url)
 
@@ -43,7 +45,11 @@ func get_ip() {
 
 	var data AmbilIP
 	json.Unmarshal(body, &data)
-	fmt.Printf("Results: %v\n", data)
+	if strings.Contains(data.Country, "ID"){
+		fmt.Printf("\nBenar\n")
+	} else {
+		fmt.Printf("\nSalah\n")
+	}
 	os.Exit(0)
 }
 
