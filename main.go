@@ -9,7 +9,7 @@ import (
 )
 
 func get_ip() {
-	kustom := "101.0.4.6"
+	kustom := "8.8.8.8"
 	url := "http://ip.zxq.co/" + kustom + "/country"
 
 	res, err := http.Get(url)
